@@ -47,6 +47,8 @@ if (WebFormUtil.getTableRowsCount(company.getCompanyId(), databaseTableName) > 0
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= redirect %>" />
 
+	<liferay-ui:error exception="<%= DuplicateColumnNameException.class %>" message="please-enter-unique-field-names" />
+
 	<liferay-ui:panel-container extended="<%= Boolean.TRUE %>" id="webFormConfiguration" persistState="<%= true %>">
 		<liferay-ui:panel collapsible="<%= true %>" extended="<%= true %>" id="webFormGeneral" persistState="<%= true %>" title="form-information">
 			<aui:fieldset>
@@ -78,7 +80,7 @@ if (WebFormUtil.getTableRowsCount(company.getCompanyId(), databaseTableName) > 0
 
 				<aui:input cssClass="lfr-input-text-container" name="preferences--subject--" value="<%= subject %>" />
 
-				<aui:input cssClass="lfr-input-text-container" name="preferences--emailAddress--" value="<%= emailAddress %>" />
+				<aui:input cssClass="lfr-input-text-container" helpMessage="add-email-addresses-separated-by-commas" label="email-addresses" name="preferences--emailAddress--" value="<%= emailAddress %>" />
 			</aui:fieldset>
 
 			<aui:fieldset cssClass="handle-data" label="database">

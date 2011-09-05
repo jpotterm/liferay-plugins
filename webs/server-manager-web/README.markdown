@@ -117,8 +117,8 @@ GET <http://localhost/server-manager-web/server/log/error[/$offset]>
 
 The response for any request will be a JSON string containing three fields:
 
- - output-stream: This will contain the requested data, if any. For example it could contain the log or the debug port. The Response field in the above section will be placed into this field unless otherwise specified. If a response is not specified above, then this field will be empty.
- - error-stream: This will contain an error message or a stack trace if any error occurred during the request.
- - success: One of the following success codes for the operation.
+ - output: This will contain the requested data, if any. For example it could contain the log or the debug port. The Response field in the above section will be placed into this field unless otherwise specified. If a response is not specified above, then this field will be empty.
+ - error: This will contain an error message or a stack trace if any error occurred during the request.
+ - status: One of the following success codes for the operation.
     - 0 for success, everything finished with no problems
     - 1 something went wrong, the operation may have completed successfully anyway, but it may not have.

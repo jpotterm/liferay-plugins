@@ -173,7 +173,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 		for (UserThread userThread : userThreads) {
 			if (EntityCacheUtil.getResult(
 						UserThreadModelImpl.ENTITY_CACHE_ENABLED,
-						UserThreadImpl.class, userThread.getPrimaryKey(), this) == null) {
+						UserThreadImpl.class, userThread.getPrimaryKey()) == null) {
 				cacheResult(userThread);
 			}
 		}
@@ -470,7 +470,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 	public UserThread fetchByPrimaryKey(long userThreadId)
 		throws SystemException {
 		UserThread userThread = (UserThread)EntityCacheUtil.getResult(UserThreadModelImpl.ENTITY_CACHE_ENABLED,
-				UserThreadImpl.class, userThreadId, this);
+				UserThreadImpl.class, userThreadId);
 
 		if (userThread == _nullUserThread) {
 			return null;
@@ -558,8 +558,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 		Object[] finderArgs = new Object[] {
 				mbThreadId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<UserThread> list = (List<UserThread>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_MBTHREADID,
@@ -894,12 +893,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 	 */
 	public List<UserThread> findByUserId(long userId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				userId,
-				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { userId, start, end, orderByComparator };
 
 		List<UserThread> list = (List<UserThread>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_USERID,
 				finderArgs, this);
@@ -1381,8 +1375,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 		Object[] finderArgs = new Object[] {
 				userId, deleted,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<UserThread> list = (List<UserThread>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_U_D,
@@ -1746,8 +1739,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 		Object[] finderArgs = new Object[] {
 				userId, read, deleted,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<UserThread> list = (List<UserThread>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_U_R_D,
@@ -2113,10 +2105,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 	 */
 	public List<UserThread> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<UserThread> list = (List<UserThread>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

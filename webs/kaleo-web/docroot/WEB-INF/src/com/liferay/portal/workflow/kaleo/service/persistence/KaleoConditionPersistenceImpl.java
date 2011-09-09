@@ -144,8 +144,7 @@ public class KaleoConditionPersistenceImpl extends BasePersistenceImpl<KaleoCond
 		for (KaleoCondition kaleoCondition : kaleoConditions) {
 			if (EntityCacheUtil.getResult(
 						KaleoConditionModelImpl.ENTITY_CACHE_ENABLED,
-						KaleoConditionImpl.class,
-						kaleoCondition.getPrimaryKey(), this) == null) {
+						KaleoConditionImpl.class, kaleoCondition.getPrimaryKey()) == null) {
 				cacheResult(kaleoCondition);
 			}
 		}
@@ -438,7 +437,7 @@ public class KaleoConditionPersistenceImpl extends BasePersistenceImpl<KaleoCond
 	public KaleoCondition fetchByPrimaryKey(long kaleoConditionId)
 		throws SystemException {
 		KaleoCondition kaleoCondition = (KaleoCondition)EntityCacheUtil.getResult(KaleoConditionModelImpl.ENTITY_CACHE_ENABLED,
-				KaleoConditionImpl.class, kaleoConditionId, this);
+				KaleoConditionImpl.class, kaleoConditionId);
 
 		if (kaleoCondition == _nullKaleoCondition) {
 			return null;
@@ -527,8 +526,7 @@ public class KaleoConditionPersistenceImpl extends BasePersistenceImpl<KaleoCond
 		Object[] finderArgs = new Object[] {
 				companyId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoCondition> list = (List<KaleoCondition>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_COMPANYID,
@@ -869,8 +867,7 @@ public class KaleoConditionPersistenceImpl extends BasePersistenceImpl<KaleoCond
 		Object[] finderArgs = new Object[] {
 				kaleoDefinitionId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoCondition> list = (List<KaleoCondition>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEODEFINITIONID,
@@ -1333,10 +1330,7 @@ public class KaleoConditionPersistenceImpl extends BasePersistenceImpl<KaleoCond
 	 */
 	public List<KaleoCondition> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KaleoCondition> list = (List<KaleoCondition>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

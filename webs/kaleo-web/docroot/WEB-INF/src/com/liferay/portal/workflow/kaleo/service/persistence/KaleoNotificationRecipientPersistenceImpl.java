@@ -152,7 +152,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 			if (EntityCacheUtil.getResult(
 						KaleoNotificationRecipientModelImpl.ENTITY_CACHE_ENABLED,
 						KaleoNotificationRecipientImpl.class,
-						kaleoNotificationRecipient.getPrimaryKey(), this) == null) {
+						kaleoNotificationRecipient.getPrimaryKey()) == null) {
 				cacheResult(kaleoNotificationRecipient);
 			}
 		}
@@ -428,7 +428,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 		long kaleoNotificationRecipientId) throws SystemException {
 		KaleoNotificationRecipient kaleoNotificationRecipient = (KaleoNotificationRecipient)EntityCacheUtil.getResult(KaleoNotificationRecipientModelImpl.ENTITY_CACHE_ENABLED,
 				KaleoNotificationRecipientImpl.class,
-				kaleoNotificationRecipientId, this);
+				kaleoNotificationRecipientId);
 
 		if (kaleoNotificationRecipient == _nullKaleoNotificationRecipient) {
 			return null;
@@ -519,8 +519,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 		Object[] finderArgs = new Object[] {
 				companyId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoNotificationRecipient> list = (List<KaleoNotificationRecipient>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_COMPANYID,
@@ -864,8 +863,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 		Object[] finderArgs = new Object[] {
 				kaleoDefinitionId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoNotificationRecipient> list = (List<KaleoNotificationRecipient>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEODEFINITIONID,
@@ -1210,8 +1208,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 		Object[] finderArgs = new Object[] {
 				kaleoNotificationId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoNotificationRecipient> list = (List<KaleoNotificationRecipient>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEONOTIFICATIONID,
@@ -1547,10 +1544,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 	 */
 	public List<KaleoNotificationRecipient> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KaleoNotificationRecipient> list = (List<KaleoNotificationRecipient>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

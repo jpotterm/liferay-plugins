@@ -185,7 +185,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		for (KaleoLog kaleoLog : kaleoLogs) {
 			if (EntityCacheUtil.getResult(
 						KaleoLogModelImpl.ENTITY_CACHE_ENABLED,
-						KaleoLogImpl.class, kaleoLog.getPrimaryKey(), this) == null) {
+						KaleoLogImpl.class, kaleoLog.getPrimaryKey()) == null) {
 				cacheResult(kaleoLog);
 			}
 		}
@@ -464,7 +464,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 	public KaleoLog fetchByPrimaryKey(long kaleoLogId)
 		throws SystemException {
 		KaleoLog kaleoLog = (KaleoLog)EntityCacheUtil.getResult(KaleoLogModelImpl.ENTITY_CACHE_ENABLED,
-				KaleoLogImpl.class, kaleoLogId, this);
+				KaleoLogImpl.class, kaleoLogId);
 
 		if (kaleoLog == _nullKaleoLog) {
 			return null;
@@ -552,8 +552,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				companyId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_COMPANYID,
@@ -893,8 +892,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				kaleoDefinitionId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEODEFINITIONID,
@@ -1235,8 +1233,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				kaleoInstanceId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEOINSTANCEID,
@@ -1579,8 +1576,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				kaleoTaskInstanceTokenId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEOTASKINSTANCETOKENID,
@@ -1925,8 +1921,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				kaleoInstanceTokenId, type,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KITI_T,
@@ -2322,8 +2317,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 		Object[] finderArgs = new Object[] {
 				kaleoClassName, kaleoClassPK, kaleoInstanceTokenId, type,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KCN_KCPK_KITI_T,
@@ -2762,10 +2756,7 @@ public class KaleoLogPersistenceImpl extends BasePersistenceImpl<KaleoLog>
 	 */
 	public List<KaleoLog> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KaleoLog> list = (List<KaleoLog>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

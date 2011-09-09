@@ -129,7 +129,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 		for (Account account : accounts) {
 			if (EntityCacheUtil.getResult(
 						AccountModelImpl.ENTITY_CACHE_ENABLED,
-						AccountImpl.class, account.getPrimaryKey(), this) == null) {
+						AccountImpl.class, account.getPrimaryKey()) == null) {
 				cacheResult(account);
 			}
 		}
@@ -442,7 +442,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 	 */
 	public Account fetchByPrimaryKey(long accountId) throws SystemException {
 		Account account = (Account)EntityCacheUtil.getResult(AccountModelImpl.ENTITY_CACHE_ENABLED,
-				AccountImpl.class, accountId, this);
+				AccountImpl.class, accountId);
 
 		if (account == _nullAccount) {
 			return null;
@@ -525,12 +525,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 	 */
 	public List<Account> findByUserId(long userId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				userId,
-				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { userId, start, end, orderByComparator };
 
 		List<Account> list = (List<Account>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_USERID,
 				finderArgs, this);
@@ -1011,10 +1006,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 	 */
 	public List<Account> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<Account> list = (List<Account>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

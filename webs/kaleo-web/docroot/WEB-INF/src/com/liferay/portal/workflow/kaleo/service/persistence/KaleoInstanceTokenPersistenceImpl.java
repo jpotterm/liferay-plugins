@@ -179,7 +179,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 			if (EntityCacheUtil.getResult(
 						KaleoInstanceTokenModelImpl.ENTITY_CACHE_ENABLED,
 						KaleoInstanceTokenImpl.class,
-						kaleoInstanceToken.getPrimaryKey(), this) == null) {
+						kaleoInstanceToken.getPrimaryKey()) == null) {
 				cacheResult(kaleoInstanceToken);
 			}
 		}
@@ -450,7 +450,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 	public KaleoInstanceToken fetchByPrimaryKey(long kaleoInstanceTokenId)
 		throws SystemException {
 		KaleoInstanceToken kaleoInstanceToken = (KaleoInstanceToken)EntityCacheUtil.getResult(KaleoInstanceTokenModelImpl.ENTITY_CACHE_ENABLED,
-				KaleoInstanceTokenImpl.class, kaleoInstanceTokenId, this);
+				KaleoInstanceTokenImpl.class, kaleoInstanceTokenId);
 
 		if (kaleoInstanceToken == _nullKaleoInstanceToken) {
 			return null;
@@ -539,8 +539,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 		Object[] finderArgs = new Object[] {
 				companyId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_COMPANYID,
@@ -882,8 +881,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 		Object[] finderArgs = new Object[] {
 				kaleoDefinitionId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEODEFINITIONID,
@@ -1228,8 +1226,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 		Object[] finderArgs = new Object[] {
 				kaleoInstanceId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEOINSTANCEID,
@@ -1578,8 +1575,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 		Object[] finderArgs = new Object[] {
 				companyId, parentKaleoInstanceTokenId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_C_PKITI,
@@ -1950,8 +1946,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 		Object[] finderArgs = new Object[] {
 				companyId, parentKaleoInstanceTokenId, completionDate,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_C_PKITI_CD,
@@ -2341,10 +2336,7 @@ public class KaleoInstanceTokenPersistenceImpl extends BasePersistenceImpl<Kaleo
 	 */
 	public List<KaleoInstanceToken> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KaleoInstanceToken> list = (List<KaleoInstanceToken>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

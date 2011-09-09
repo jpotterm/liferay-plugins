@@ -148,7 +148,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 		for (KBTemplate kbTemplate : kbTemplates) {
 			if (EntityCacheUtil.getResult(
 						KBTemplateModelImpl.ENTITY_CACHE_ENABLED,
-						KBTemplateImpl.class, kbTemplate.getPrimaryKey(), this) == null) {
+						KBTemplateImpl.class, kbTemplate.getPrimaryKey()) == null) {
 				cacheResult(kbTemplate);
 			}
 		}
@@ -456,7 +456,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 	public KBTemplate fetchByPrimaryKey(long kbTemplateId)
 		throws SystemException {
 		KBTemplate kbTemplate = (KBTemplate)EntityCacheUtil.getResult(KBTemplateModelImpl.ENTITY_CACHE_ENABLED,
-				KBTemplateImpl.class, kbTemplateId, this);
+				KBTemplateImpl.class, kbTemplateId);
 
 		if (kbTemplate == _nullKBTemplate) {
 			return null;
@@ -539,12 +539,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 	 */
 	public List<KBTemplate> findByUuid(String uuid, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				uuid,
-				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { uuid, start, end, orderByComparator };
 
 		List<KBTemplate> list = (List<KBTemplate>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_UUID,
 				finderArgs, this);
@@ -1059,8 +1054,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 		Object[] finderArgs = new Object[] {
 				groupId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KBTemplate> list = (List<KBTemplate>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_GROUPID,
@@ -1701,10 +1695,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 	 */
 	public List<KBTemplate> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KBTemplate> list = (List<KBTemplate>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

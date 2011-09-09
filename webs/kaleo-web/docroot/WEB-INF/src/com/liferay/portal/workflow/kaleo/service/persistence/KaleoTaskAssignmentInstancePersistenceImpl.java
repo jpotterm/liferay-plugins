@@ -167,7 +167,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 			if (EntityCacheUtil.getResult(
 						KaleoTaskAssignmentInstanceModelImpl.ENTITY_CACHE_ENABLED,
 						KaleoTaskAssignmentInstanceImpl.class,
-						kaleoTaskAssignmentInstance.getPrimaryKey(), this) == null) {
+						kaleoTaskAssignmentInstance.getPrimaryKey()) == null) {
 				cacheResult(kaleoTaskAssignmentInstance);
 			}
 		}
@@ -449,7 +449,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		long kaleoTaskAssignmentInstanceId) throws SystemException {
 		KaleoTaskAssignmentInstance kaleoTaskAssignmentInstance = (KaleoTaskAssignmentInstance)EntityCacheUtil.getResult(KaleoTaskAssignmentInstanceModelImpl.ENTITY_CACHE_ENABLED,
 				KaleoTaskAssignmentInstanceImpl.class,
-				kaleoTaskAssignmentInstanceId, this);
+				kaleoTaskAssignmentInstanceId);
 
 		if (kaleoTaskAssignmentInstance == _nullKaleoTaskAssignmentInstance) {
 			return null;
@@ -540,8 +540,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		Object[] finderArgs = new Object[] {
 				companyId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoTaskAssignmentInstance> list = (List<KaleoTaskAssignmentInstance>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_COMPANYID,
@@ -886,8 +885,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		Object[] finderArgs = new Object[] {
 				kaleoDefinitionId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoTaskAssignmentInstance> list = (List<KaleoTaskAssignmentInstance>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEODEFINITIONID,
@@ -1233,8 +1231,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		Object[] finderArgs = new Object[] {
 				kaleoInstanceId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoTaskAssignmentInstance> list = (List<KaleoTaskAssignmentInstance>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEOINSTANCEID,
@@ -1582,8 +1579,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		Object[] finderArgs = new Object[] {
 				kaleoTaskInstanceTokenId,
 				
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
+				start, end, orderByComparator
 			};
 
 		List<KaleoTaskAssignmentInstance> list = (List<KaleoTaskAssignmentInstance>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_KALEOTASKINSTANCETOKENID,
@@ -1921,10 +1917,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 	 */
 	public List<KaleoTaskAssignmentInstance> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
-		Object[] finderArgs = new Object[] {
-				String.valueOf(start), String.valueOf(end),
-				String.valueOf(orderByComparator)
-			};
+		Object[] finderArgs = new Object[] { start, end, orderByComparator };
 
 		List<KaleoTaskAssignmentInstance> list = (List<KaleoTaskAssignmentInstance>)FinderCacheUtil.getResult(FINDER_PATH_FIND_ALL,
 				finderArgs, this);

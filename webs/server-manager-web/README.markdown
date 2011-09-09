@@ -16,7 +16,7 @@ Each url has a request type which is the type of the HTTP request (GET, POST, UP
 
 These parameters can be set on any GET request and are passed as GET parameters in the URL with ?name=value. If multiple values are possible they will be separated by a '|' and the first one will be the default value.
 
- - `format=json|raw` This specifies the format of the response. The default is a JSON response with an output-stream, error-stream, and success flag. If raw is set, however, the output-stream is returned as a string, without its JSON wrapping.
+ - `format=json|raw` This specifies the format of the response. The default is a JSON response with an output, error, and status flag. If raw is set, however, the output is returned as a string, without its JSON wrapping.
 
 
 ### Monitoring Methods
@@ -119,6 +119,6 @@ The response for any request will be a JSON string containing three fields:
 
  - output: This will contain the requested data, if any. For example it could contain the log or the debug port. The Response field in the above section will be placed into this field unless otherwise specified. If a response is not specified above, then this field will be empty.
  - error: This will contain an error message or a stack trace if any error occurred during the request.
- - status: One of the following success codes for the operation.
+ - status: One of the following status codes for the operation.
     - 0 for success, everything finished with no problems
     - 1 something went wrong, the operation may have completed successfully anyway, but it may not have.
